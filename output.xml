@@ -1,106 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-28T19:38:38.925523" rpa="false" schemaversion="5">
-<suite id="s1" name="scenario00-Validate FIRST NAME requirement" source="c:\Users\Ryzen\Desktop\LBQA-Forms-main\scenarios\_debugging\scenario00-Validate FIRST NAME requirement.robot">
-<test id="s1-t1" name="Case01: Validate FIRST NAME requirement" line="9">
-<kw name="Given Load the page" owner="keywords">
+<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-04-04T11:32:02.243541" rpa="false" schemaversion="5">
+<suite id="s1" name="scenario01-[batch] Validate FIRST NAME requirement" source="/home/robinson/Desktop/LBHQ-Forms-automation-main/scenarios/Validate mantatory fields/scenario01-[batch] Validate FIRST NAME requirement.robot">
+<test id="s1-t1" name="Case01: Validate FIRST NAME requirement" line="8">
+<kw name="Open and Check All Pages with Forms" owner="keywords">
+<kw name="Load Spreadsheet" owner="ExcelFormScanner">
+<arg>${file_path}</arg>
+<status status="PASS" start="2025-04-04T11:32:04.513779" elapsed="1.744456"/>
+</kw>
+<kw name="Get Urls With Form" owner="ExcelFormScanner">
+<msg time="2025-04-04T11:32:06.321221" level="INFO">${urls} = ['https://torontolincoln.kinsta.cloud/about-us-downtown-lincoln/', 'https://torontolincoln.kinsta.cloud/about-us-east-court-lincoln/', 'https://torontolincoln.kinsta.cloud/about-us-pine-tree-lincoln/'...</msg>
+<var>${urls}</var>
+<status status="PASS" start="2025-04-04T11:32:06.258835" elapsed="0.064744"/>
+</kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:39.781230" level="INFO">Opening browser 'chrome' to base url 'https://torontolincoln.kinsta.cloud/form/toronto-lincoln-discovery-drive'.</msg>
-<arg>${BASE_URL}</arg>
+<msg time="2025-04-04T11:32:06.327564" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<arg>about:blank</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-03-28T19:38:39.780868" elapsed="4.333293"/>
+<status status="PASS" start="2025-04-04T11:32:06.324003" elapsed="12.775713"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:39.779879" elapsed="4.334600"/>
+<for flavor="IN">
+<iter>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:32:19.107574" level="INFO">Opening url 'https://torontolincoln.kinsta.cloud/about-us-downtown-lincoln/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-04-04T11:32:19.107109" elapsed="9.087949"/>
 </kw>
-<kw name="When Fill first name field" owner="keywords">
+<kw name="Fill last name field" owner="keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.116562" level="INFO">Typing text '' into text field 'xpath=//input[@placeholder="FIRST NAME (*)"]'.</msg>
-<arg>${input_first_name_by_placeholder}</arg>
-<arg>${EMPTY}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.115581" elapsed="0.117521"/>
-</kw>
-<status status="PASS" start="2025-03-28T19:38:44.115043" elapsed="0.118327"/>
-</kw>
-<kw name="And Fill last name field" owner="keywords">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.234900" level="INFO">Typing text 'LBHQQA_LAST_NAME' into text field 'xpath=//input[@placeholder="LAST NAME (*)"]'.</msg>
+<msg time="2025-04-04T11:32:28.225406" level="INFO">Typing text 'LBHQQA_LAST_NAME' into text field 'xpath=//input[@placeholder="LAST NAME (*)"]'.</msg>
 <arg>${input_last_name_by_placeholder}</arg>
 <arg>LBHQQA_LAST_NAME</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.234578" elapsed="0.112037"/>
+<status status="PASS" start="2025-04-04T11:32:28.224330" elapsed="2.731823"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:44.234124" elapsed="0.112784"/>
+<status status="PASS" start="2025-04-04T11:32:28.214787" elapsed="2.766137"/>
 </kw>
-<kw name="And Fill email field" owner="keywords">
+<kw name="Fill email field" owner="keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.348149" level="INFO">Typing text 'robinson@leadboxhq.com' into text field 'xpath=//input[@placeholder="EMAIL (*)"]'.</msg>
+<msg time="2025-04-04T11:32:31.000048" level="INFO">Typing text 'robinson@leadboxhq.com' into text field 'xpath=//input[@placeholder="EMAIL (*)"]'.</msg>
 <arg>${input_email_by_placeholder}</arg>
 <arg>robinson@leadboxhq.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.347849" elapsed="0.106912"/>
+<status status="PASS" start="2025-04-04T11:32:30.998943" elapsed="1.102557"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:44.347465" elapsed="0.107529"/>
+<status status="PASS" start="2025-04-04T11:32:30.991127" elapsed="1.110697"/>
 </kw>
-<kw name="And Fill phone field" owner="keywords">
+<kw name="Fill phone field" owner="keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.456298" level="INFO">Typing text '1111111111' into text field 'xpath=//input[@placeholder="PHONE"]'.</msg>
+<msg time="2025-04-04T11:32:32.116274" level="INFO">Typing text '1111111111' into text field 'xpath=//input[@placeholder="PHONE"]'.</msg>
 <arg>${input_phone_by_placeholder}</arg>
 <arg>1111111111</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.455978" elapsed="0.092806"/>
+<status status="PASS" start="2025-04-04T11:32:32.115684" elapsed="1.084569"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:44.455582" elapsed="0.093507"/>
+<status status="PASS" start="2025-04-04T11:32:32.102164" elapsed="1.100724"/>
 </kw>
-<kw name="And Fill message or additional vehicle information" owner="keywords">
+<kw name="Fill message or additional vehicle information" owner="keywords">
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.552005" level="FAIL">Variable '${input_message_by_placeholder}' not found. Did you mean:
+<msg time="2025-04-04T11:32:33.261943" level="FAIL">Variable '${input_message_by_placeholder}' not found. Did you mean:
     ${input_required_message_by_placeholder}
     ${input_optional_message_by_placeholder}</msg>
 <arg>${input_message_by_placeholder}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="FAIL" start="2025-03-28T19:38:44.550551" elapsed="0.001632">Variable '${input_message_by_placeholder}' not found. Did you mean:
+<status status="FAIL" start="2025-04-04T11:32:33.223173" elapsed="0.039041">Variable '${input_message_by_placeholder}' not found. Did you mean:
     ${input_required_message_by_placeholder}
     ${input_optional_message_by_placeholder}</status>
 </kw>
-<msg time="2025-03-28T19:38:44.552431" level="INFO">${has_required_message} = False</msg>
+<msg time="2025-04-04T11:32:33.276190" level="INFO">${has_required_message} = False</msg>
 <var>${has_required_message}</var>
 <arg>Element Should Be Visible</arg>
 <arg>${input_message_by_placeholder}</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.550221" elapsed="0.002318"/>
+<status status="PASS" start="2025-04-04T11:32:33.222695" elapsed="0.053848"/>
 </kw>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.554282" level="FAIL">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+<msg time="2025-04-04T11:32:33.293042" level="FAIL">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
     ${input_optional_message_by_placeholder}</msg>
 <arg>${input__non_message_by_placeholder}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="FAIL" start="2025-03-28T19:38:44.553079" elapsed="0.001323">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+<status status="FAIL" start="2025-04-04T11:32:33.283149" elapsed="0.010147">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
     ${input_optional_message_by_placeholder}</status>
 </kw>
-<msg time="2025-03-28T19:38:44.554574" level="INFO">${has_optional_message} = False</msg>
+<msg time="2025-04-04T11:32:33.306790" level="INFO">${has_optional_message} = False</msg>
 <var>${has_optional_message}</var>
 <arg>Element Should Be Visible</arg>
 <arg>${input__non_message_by_placeholder}</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.552792" elapsed="0.001873"/>
+<status status="PASS" start="2025-04-04T11:32:33.282584" elapsed="0.029251"/>
 </kw>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.700661" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-03-28T19:38:44.700947" level="FAIL">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</msg>
+<msg time="2025-04-04T11:32:34.289518" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-04T11:32:34.298203" level="FAIL">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</msg>
 <arg>${input_additional_vehicle_information_by_placeholder}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="FAIL" start="2025-03-28T19:38:44.555076" elapsed="0.149427">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</status>
+<status status="FAIL" start="2025-04-04T11:32:33.312722" elapsed="1.075177">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</status>
 </kw>
-<msg time="2025-03-28T19:38:44.704755" level="INFO">${has_vehicle_info} = False</msg>
+<msg time="2025-04-04T11:32:34.388258" level="INFO">${has_vehicle_info} = False</msg>
 <var>${has_vehicle_info}</var>
 <arg>Element Should Be Visible</arg>
 <arg>${input_additional_vehicle_information_by_placeholder}</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.554841" elapsed="0.150024"/>
+<status status="PASS" start="2025-04-04T11:32:33.312213" elapsed="1.076838"/>
 </kw>
 <if>
 <branch type="IF" condition="${has_required_message}">
@@ -108,81 +113,307 @@
 <arg>${input_required_message_by_placeholder}</arg>
 <arg>AUTOMATIZED_TESTS_REQUIRED_MESSAGE</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-03-28T19:38:44.705329" elapsed="0.000115"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.390632" elapsed="0.000216"/>
 </kw>
 <kw name="ELSE IF ${has_optional_message}">
-<status status="NOT RUN" start="2025-03-28T19:38:44.705823" elapsed="0.000101"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.393995" elapsed="0.000606"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
 <arg>${input_optional_message_by_placeholder}</arg>
 <arg>AUTOMATIZED_TESTS_OPTIONAL_MESSAGE</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-03-28T19:38:44.706085" elapsed="0.000107"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.394968" elapsed="0.000183"/>
 </kw>
 <kw name="ELSE IF ${has_vehicle_info}">
-<status status="NOT RUN" start="2025-03-28T19:38:44.706398" elapsed="0.000096"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.396212" elapsed="0.000608"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
 <arg>${input_additional_vehicle_information_by_placeholder}</arg>
 <arg>2021 Tesla 3 #abc-0123456789</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-03-28T19:38:44.706647" elapsed="0.000099"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.397328" elapsed="0.000280"/>
 </kw>
-<status status="NOT RUN" start="2025-03-28T19:38:44.705050" elapsed="0.001799"/>
+<status status="NOT RUN" start="2025-04-04T11:32:34.390016" elapsed="0.019361"/>
 </branch>
-<status status="PASS" start="2025-03-28T19:38:44.705010" elapsed="0.001946"/>
+<status status="PASS" start="2025-04-04T11:32:34.389915" elapsed="0.019820"/>
 </if>
-<status status="PASS" start="2025-03-28T19:38:44.549744" elapsed="0.157485"/>
+<status status="PASS" start="2025-04-04T11:32:33.221831" elapsed="1.188821"/>
 </kw>
-<kw name="And Click on the submit button" owner="keywords">
+<kw name="Click on the submit button" owner="keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.708419" level="INFO">Clicking button 'xpath=//input[@type="submit"]'.</msg>
+<msg time="2025-04-04T11:32:34.416976" level="INFO">Clicking button 'xpath=//input[@type="submit"]'.</msg>
 <arg>${click_button_by_id}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.708128" elapsed="0.087931"/>
+<status status="PASS" start="2025-04-04T11:32:34.416428" elapsed="5.322337"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:44.707781" elapsed="0.088552"/>
+<status status="PASS" start="2025-04-04T11:32:34.413804" elapsed="5.346691"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${read_alert_text}</arg>
 <arg>timeout=0.1s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.796847" elapsed="0.026004"/>
+<status status="PASS" start="2025-04-04T11:32:39.760897" elapsed="1.666258"/>
 </kw>
 <kw name="Then Visualize a mandatory warning" owner="keywords">
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-03-28T19:38:44.847037" level="INFO">${alert} = This is a required field.</msg>
+<msg time="2025-04-04T11:32:42.081266" level="INFO">${alert} = This is a required field.</msg>
 <var>${alert}</var>
 <arg>${read_alert_text}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.823920" elapsed="0.023316"/>
+<status status="PASS" start="2025-04-04T11:32:41.501600" elapsed="0.582674"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${alert}</arg>
 <arg>This is a required field.</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.847470" elapsed="0.000310"/>
+<status status="PASS" start="2025-04-04T11:32:42.085437" elapsed="0.002153"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:44.823500" elapsed="0.024423"/>
+<status status="PASS" start="2025-04-04T11:32:41.475643" elapsed="0.612879"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-28T19:38:44.848571" elapsed="2.185188"/>
+<var name="${url}">https://torontolincoln.kinsta.cloud/about-us-downtown-lincoln/</var>
+<status status="PASS" start="2025-04-04T11:32:19.106281" elapsed="22.983442"/>
+</iter>
+<iter>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:32:42.100982" level="INFO">Opening url 'https://torontolincoln.kinsta.cloud/about-us-east-court-lincoln/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-04-04T11:32:42.099386" elapsed="15.899976"/>
 </kw>
-<status status="PASS" start="2025-03-28T19:38:39.778958" elapsed="7.255497"/>
-</test>
-<status status="PASS" start="2025-03-28T19:38:38.930818" elapsed="8.105049"/>
-</suite>
-<statistics>
-<total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
-</total>
-<tag>
-</tag>
-<suite>
-<stat name="scenario00-Validate FIRST NAME requirement" id="s1" pass="1" fail="0" skip="0">scenario00-Validate FIRST NAME requirement</stat>
-</suite>
-</statistics>
-<errors>
-</errors>
-</robot>
+<kw name="Fill last name field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:32:58.077456" level="INFO">Typing text 'LBHQQA_LAST_NAME' into text field 'xpath=//input[@placeholder="LAST NAME (*)"]'.</msg>
+<arg>${input_last_name_by_placeholder}</arg>
+<arg>LBHQQA_LAST_NAME</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:32:58.072777" elapsed="13.519370"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:32:58.049524" elapsed="13.634071"/>
+</kw>
+<kw name="Fill email field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:11.701166" level="INFO">Typing text 'robinson@leadboxhq.com' into text field 'xpath=//input[@placeholder="EMAIL (*)"]'.</msg>
+<arg>${input_email_by_placeholder}</arg>
+<arg>robinson@leadboxhq.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:33:11.700468" elapsed="8.712803"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:33:11.699647" elapsed="8.727684"/>
+</kw>
+<kw name="Fill phone field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:20.432167" level="INFO">Typing text '1111111111' into text field 'xpath=//input[@placeholder="PHONE"]'.</msg>
+<arg>${input_phone_by_placeholder}</arg>
+<arg>1111111111</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:33:20.430336" elapsed="5.209971"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:33:20.429169" elapsed="5.235617"/>
+</kw>
+<kw name="Fill message or additional vehicle information" owner="keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:25.677960" level="FAIL">Variable '${input_message_by_placeholder}' not found. Did you mean:
+    ${input_required_message_by_placeholder}
+    ${input_optional_message_by_placeholder}</msg>
+<arg>${input_message_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:33:25.675772" elapsed="0.002673">Variable '${input_message_by_placeholder}' not found. Did you mean:
+    ${input_required_message_by_placeholder}
+    ${input_optional_message_by_placeholder}</status>
+</kw>
+<msg time="2025-04-04T11:33:25.678751" level="INFO">${has_required_message} = False</msg>
+<var>${has_required_message}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input_message_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:33:25.675196" elapsed="0.003696"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:25.682999" level="FAIL">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+    ${input_optional_message_by_placeholder}</msg>
+<arg>${input__non_message_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:33:25.680174" elapsed="0.004124">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+    ${input_optional_message_by_placeholder}</status>
+</kw>
+<msg time="2025-04-04T11:33:25.684721" level="INFO">${has_optional_message} = False</msg>
+<var>${has_optional_message}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input__non_message_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:33:25.679253" elapsed="0.005773"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:26.320917" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-04T11:33:26.333653" level="FAIL">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</msg>
+<arg>${input_additional_vehicle_information_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:33:25.689419" elapsed="0.698960">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</status>
+</kw>
+<msg time="2025-04-04T11:33:26.388734" level="INFO">${has_vehicle_info} = False</msg>
+<var>${has_vehicle_info}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input_additional_vehicle_information_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:33:25.686245" elapsed="0.702649"/>
+</kw>
+<if>
+<branch type="IF" condition="${has_required_message}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${input_required_message_by_placeholder}</arg>
+<arg>AUTOMATIZED_TESTS_REQUIRED_MESSAGE</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-04T11:33:26.393617" elapsed="0.000223"/>
+</kw>
+<kw name="ELSE IF ${has_optional_message}">
+<status status="NOT RUN" start="2025-04-04T11:33:26.394211" elapsed="0.000217"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${input_optional_message_by_placeholder}</arg>
+<arg>AUTOMATIZED_TESTS_OPTIONAL_MESSAGE</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-04T11:33:26.394806" elapsed="0.000170"/>
+</kw>
+<kw name="ELSE IF ${has_vehicle_info}">
+<status status="NOT RUN" start="2025-04-04T11:33:26.396186" elapsed="0.000293"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${input_additional_vehicle_information_by_placeholder}</arg>
+<arg>2021 Tesla 3 #abc-0123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-04T11:33:26.396843" elapsed="0.000377"/>
+</kw>
+<status status="NOT RUN" start="2025-04-04T11:33:26.389142" elapsed="0.008301"/>
+</branch>
+<status status="PASS" start="2025-04-04T11:33:26.389092" elapsed="0.008537"/>
+</if>
+<status status="PASS" start="2025-04-04T11:33:25.674213" elapsed="0.723541"/>
+</kw>
+<kw name="Click on the submit button" owner="keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:26.399358" level="INFO">Clicking button 'xpath=//input[@type="submit"]'.</msg>
+<arg>${click_button_by_id}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:33:26.398860" elapsed="3.598398"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:33:26.398099" elapsed="3.639933"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${read_alert_text}</arg>
+<arg>timeout=0.1s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T11:33:30.038608" elapsed="0.481960"/>
+</kw>
+<kw name="Then Visualize a mandatory warning" owner="keywords">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:31.787981" level="INFO">${alert} = This is a required field.</msg>
+<var>${alert}</var>
+<arg>${read_alert_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:33:30.529925" elapsed="1.277540"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${alert}</arg>
+<arg>This is a required field.</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-04-04T11:33:31.808463" elapsed="0.000476"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:33:30.529220" elapsed="1.279951"/>
+</kw>
+<var name="${url}">https://torontolincoln.kinsta.cloud/about-us-east-court-lincoln/</var>
+<status status="PASS" start="2025-04-04T11:32:42.095048" elapsed="49.714269"/>
+</iter>
+<iter>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:33:31.883207" level="INFO">Opening url 'https://torontolincoln.kinsta.cloud/about-us-pine-tree-lincoln/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-04-04T11:33:31.880793" elapsed="40.934938"/>
+</kw>
+<kw name="Fill last name field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:34:12.951272" level="INFO">Typing text 'LBHQQA_LAST_NAME' into text field 'xpath=//input[@placeholder="LAST NAME (*)"]'.</msg>
+<arg>${input_last_name_by_placeholder}</arg>
+<arg>LBHQQA_LAST_NAME</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:34:12.949801" elapsed="30.037493"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:34:12.937524" elapsed="30.091730"/>
+</kw>
+<kw name="Fill email field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:34:43.121344" level="INFO">Typing text 'robinson@leadboxhq.com' into text field 'xpath=//input[@placeholder="EMAIL (*)"]'.</msg>
+<arg>${input_email_by_placeholder}</arg>
+<arg>robinson@leadboxhq.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:34:43.118679" elapsed="29.679494"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:34:43.085705" elapsed="29.796722"/>
+</kw>
+<kw name="Fill phone field" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:35:12.936612" level="INFO">Typing text '1111111111' into text field 'xpath=//input[@placeholder="PHONE"]'.</msg>
+<arg>${input_phone_by_placeholder}</arg>
+<arg>1111111111</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T11:35:12.893822" elapsed="60.606655"/>
+</kw>
+<status status="PASS" start="2025-04-04T11:35:12.889285" elapsed="60.681868"/>
+</kw>
+<kw name="Fill message or additional vehicle information" owner="keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:36:13.584732" level="FAIL">Variable '${input_message_by_placeholder}' not found. Did you mean:
+    ${input_required_message_by_placeholder}
+    ${input_optional_message_by_placeholder}</msg>
+<arg>${input_message_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:36:13.578413" elapsed="0.006718">Variable '${input_message_by_placeholder}' not found. Did you mean:
+    ${input_required_message_by_placeholder}
+    ${input_optional_message_by_placeholder}</status>
+</kw>
+<msg time="2025-04-04T11:36:13.605856" level="INFO">${has_required_message} = False</msg>
+<var>${has_required_message}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input_message_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:36:13.577282" elapsed="0.029384"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:36:13.609760" level="FAIL">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+    ${input_optional_message_by_placeholder}</msg>
+<arg>${input__non_message_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:36:13.607955" elapsed="0.002154">Variable '${input__non_message_by_placeholder}' not found. Did you mean:
+    ${input_optional_message_by_placeholder}</status>
+</kw>
+<msg time="2025-04-04T11:36:13.610374" level="INFO">${has_optional_message} = False</msg>
+<var>${has_optional_message}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input__non_message_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:36:13.607324" elapsed="0.003181"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T11:36:24.068811" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-04T11:36:24.181247" level="FAIL">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</msg>
+<arg>${input_additional_vehicle_information_by_placeholder}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-04-04T11:36:13.611575" elapsed="10.607943">Element with locator 'xpath=//textarea[contains(@placeholder, 'your vehicle information')]' not found.</status>
+</kw>
+<msg time="2025-04-04T11:36:24.219902" level="INFO">${has_vehicle_info} = False</msg>
+<var>${has_vehicle_info}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${input_additional_vehicle_information_by_placeholder}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-04T11:36:13.610770" elapsed="10.609272"/>
+</kw>
+<if>
+<branch type="IF" condition="${has_required_message}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>

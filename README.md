@@ -1,19 +1,28 @@
 # Install Python
 https://www.python.org/downloads/
 
-# Install pip
 ## Clone the project
-`<pj repository link here>`
-## Install SeleniumLibrary
-`pip install robotframework-seleniumlibrary`
-~~## Install FakerLibrary~~
-~~`pip install robotframework-faker`~~
+`https://github.com/robinsonmourao/LBHQ-Forms-automation-main`
 
-# Install chromedriver
+# WINDOWS
+## Install SeleniumLibrary
+`pip install robotframework-seleniumlibrary openpyxl pandas`
+## Install chromedriver
 Choose the same regular chrome version installed on your end.
 https://googlechromelabs.github.io/chrome-for-testing/
-## Paste chromedriver.exe on the Python's Script
+### Paste chromedriver.exe on the Python's Script
 https://gyazo.com/815dbb885ac020716b103c1485cff236
+
+# LINUX
+## Install pip
+`sudo apt install python3-pip`
+### Install the library
+`pip install robotframework-seleniumlibrary openpyxl pandas --break-system-packages`
+
+
+### To generage field values randomly (Optional)
+`pip install robotframework-faker --break-system-packages`
+
 
 # Open the project path
 `cd "project-path"`
@@ -24,12 +33,12 @@ OR instal vscode extension via marketplace (you can run on the Play button):
 `robocorp.robotframework-lsp`
 
 # Locations
-/resources -> Configuration's files to manage the project
-  ├── keywords.robot
-  └── variables.robot
-/scenarios -> Global test's scenarios
-  └── scenarios description
-/reports
-  ├── log.html
-  ├── output.xml
-  └── report.html
+/resources -> Configuration's files to manage the project<br>
+  ├── keywords.robot<br>
+  └── variables.robot<br>
+/scenarios -> Global test's scenarios<br>
+  └── scenarios description<br>
+/reports<br>
+  ├── log.html<br>
+  ├── output.xml<br>
+  └── report.html<br>
