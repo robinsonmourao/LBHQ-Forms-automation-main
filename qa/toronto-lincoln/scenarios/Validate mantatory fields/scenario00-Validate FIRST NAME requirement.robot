@@ -1,9 +1,8 @@
 ** Settings **
 Library     SeleniumLibrary
-#Library     FakerLibrary
 Library     ./utils/ExcelFormScanner.py
-Resource    ./resources/keywords.robot
-Resource    ./resources/variables.robot
+Resource    ./global-resources/keywords.robot
+Resource    ./global-resources/variables.robot
 
 ** Test Cases **
 Case01: Validate FIRST NAME requirement

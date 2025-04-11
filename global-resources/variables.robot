@@ -1,6 +1,6 @@
 ** Variables **
 ${SPREADSHEET_PATH}                         ./Toronto Lincoln.xlsx
-${BASE_URL}                                 https://torontolincoln.kinsta.cloud/form/toronto-lincoln-discovery-drive
+${BASE_URL}                                 https://torontolincolndealers.com/contact-us/
 
 ${read_alert_text}                          xpath=//div[contains(@class, "nf-error-required-error")]
 
@@ -15,6 +15,8 @@ ${input_email_by_placeholder}               xpath=//input[@placeholder="EMAIL (*
 
 ${input_phone_by_id}                        name=phone
 ${input_phone_by_placeholder}               xpath=//input[@placeholder="PHONE"]
+
+${postal_code_input_by_placeholder}          xpath=//input[@placeholder="POSTAL CODE (*)"]
 
 ${input_message_by_id}                      id=nf-field-46
 ${input_required_message_by_placeholder}   xpath=//textarea[@placeholder="MESSAGE (*)"]

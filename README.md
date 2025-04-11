@@ -32,12 +32,33 @@ https://gyazo.com/815dbb885ac020716b103c1485cff236
 OR instal vscode extension via marketplace (you can run on the Play button): 
 `robocorp.robotframework-lsp`
 
-# Locations
-/resources -> Configuration's files to manage the project<br>
-  ├── keywords.robot<br>
-  └── variables.robot<br>
-/scenarios -> Global test's scenarios<br>
-  └── scenarios description<br>
+# Project Structure
+/.vscode -> Non-used<br>
+
+/global-resources -> Configuration's files to manage the project<br>
+  ├── keywords.robot -> Shared project-wide keywords<br>
+  └── variables.robot -> Shared project-wide variables<br>
+
+/qa -><br>
+  └──/<dealer-name><br>
+    ├──/resources<br>
+      └──variables.robot -> QA-specific variables for the dealer <br>
+      └──keywords.robot -> QA-specific keywords for the dealer<br>
+    └──/scenarios<br>
+      └── <scenario-files>.robot><br>
+
+/production <br>
+  └──/<dealer-name><br>
+    ├──/resources<br>
+      └──variables.robot -> Prod-specific variables for the dealer<br>
+      └──keywords.robot -> Prod-specific keywords for the dealer<br> Prod-specific keywords for the dealer
+    └──/scenarios<br>
+      └── <scenario-files>.robot><br>
+
+/utils -><br>
+  └──ExcelFormScanner.py -> Excel parser algorithm<br>
+  └──__pycache__<br>
+
 /reports<br>
   ├── log.html<br>
   ├── output.xml<br>
