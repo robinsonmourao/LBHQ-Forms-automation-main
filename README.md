@@ -33,33 +33,36 @@ OR instal vscode extension via marketplace (you can run on the Play button):
 `robocorp.robotframework-lsp`
 
 # Project Structure
-/.vscode -> Non-used<br>
+- └── /.vscode  
+  - └── (Non-used)
 
-/global-resources -> Configuration's files to manage the project<br>
-  ├── keywords.robot -> Shared project-wide keywords<br>
-  └── variables.robot -> Shared project-wide variables<br>
+- └── /global-resources  
+  - ├── keywords.robot — Shared project-wide keywords  
+  - └── variables.robot — Shared project-wide variables  
 
-/qa -><br>
-  └──/<dealer-name><br>
-    ├──/resources<br>
-      └──variables.robot -> QA-specific variables for the dealer <br>
-      └──keywords.robot -> QA-specific keywords for the dealer<br>
-    └──/scenarios<br>
-      └── <scenario-files>.robot><br>
+- └── /qa  
+  - └── /*dealer-name  
+    - ├── /resources  
+      - ├── keywords.robot — QA-specific keywords for the dealer  
+      - └── variables.robot — QA-specific variables for the dealer  
+    - └── /(scenario-folder)
+      - ├── matrix.robot — Values to input
+      - └── (scenarioXX-description).robot  
 
-/production <br>
-  └──/<dealer-name><br>
-    ├──/resources<br>
-      └──variables.robot -> Prod-specific variables for the dealer<br>
-      └──keywords.robot -> Prod-specific keywords for the dealer<br> Prod-specific keywords for the dealer
-    └──/scenarios<br>
-      └── <scenario-files>.robot><br>
+- └── /production  
+  - └── /*dealer-name
+    - ├── /resources  
+      - ├── keywords.robot — Prod-specific keywords for the dealer  
+      - └── variables.robot — Prod-specific variables for the dealer
+    - └── /(scenario-folder)
+      - ├── matrix.robot — Values to input
+      - └── (scenarioXX-description).robot  
 
-/utils -><br>
-  └──ExcelFormScanner.py -> Excel parser algorithm<br>
-  └──__pycache__<br>
+- /utils  
+  - ├── xcelFormScanner.py — Excel parser algorithm  
+  - └── __pycache__  
 
-/reports<br>
-  ├── log.html<br>
-  ├── output.xml<br>
-  └── report.html<br>
+- /reports  
+  - ├── log.html  
+  - ├── output.xml  
+  - └── report.html

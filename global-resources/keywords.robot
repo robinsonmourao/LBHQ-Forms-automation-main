@@ -1,8 +1,10 @@
 *** Settings ***
 Library    SeleniumLibrary
+
 ** Keywords **
 Load the page
     Open Browser                    ${BASE_URL}                                 chrome
+
 Fill first name field
     Input Text                      ${input_first_name_by_placeholder}          ${EMPTY}
 Fill last name field
