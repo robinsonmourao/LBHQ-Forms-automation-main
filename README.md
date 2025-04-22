@@ -37,8 +37,9 @@ OR instal vscode extension via marketplace (you can run on the Play button):
   - └── (Non-used)
 
 - └── /global-resources  
-  - ├── keywords.robot — Shared project-wide keywords  
-  - └── variables.robot — Shared project-wide variables  
+  - ├── global-keywords.robot — Shared project-wide keywords  
+  - ├── global-variables.robot — Shared project-wide variables  
+  - └── matrix.robot — Global CSS mapping selectors and Values
 
 - └── /qa  
   - └── /*dealer-name  
@@ -46,7 +47,6 @@ OR instal vscode extension via marketplace (you can run on the Play button):
       - ├── keywords.robot — QA-specific keywords for the dealer  
       - └── variables.robot — QA-specific variables for the dealer  
     - └── /(scenario-folder)
-      - ├── matrix.robot — Values to input
       - └── (scenarioXX-description).robot  
 
 - └── /production  

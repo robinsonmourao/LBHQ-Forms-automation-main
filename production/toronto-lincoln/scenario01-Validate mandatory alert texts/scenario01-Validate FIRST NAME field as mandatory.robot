@@ -3,9 +3,9 @@ Library     SeleniumLibrary
 Library     ./utils/ExcelFormScanner.py
 Resource    ./global-resources/keywords.robot
 Resource    ./global-resources/variables.robot
+Resource    ./global-resources/matrix.robot
 Resource    ./production/toronto-lincoln/resources/keywords.robot
 Resource    ./production/toronto-lincoln/resources/variables.robot
-Resource    ./production/toronto-lincoln/scenario01-Validate mandatory alert texts/matrix.robot
 
 ** Test Cases **
 Case01: Validate FIRST NAME mandatory alert text

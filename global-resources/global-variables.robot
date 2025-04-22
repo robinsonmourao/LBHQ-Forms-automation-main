@@ -1,6 +1,6 @@
 ** Variables **
-${SPREADSHEET_PATH}                         ./Toronto Lincoln.xlsx
-${BASE_URL}                                 https://torontolincolndealers.com/contact-us/
+${SPREADSHEET_PATH}                         ./Sherwood Sites.xlsx
+#${BASE_URL}                                 https://torontolincolndealers.com/contact-us/
 
 ${read_alert_text}                          xpath=//div[contains(@class, "nf-error-required-error")]
 
