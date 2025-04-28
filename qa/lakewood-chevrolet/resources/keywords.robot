@@ -12,27 +12,30 @@ Open and Check All Pages with Forms
         Run Keyword If    '${url}' == ''    Continue For Loop
         Go To    ${url}
         Log To Console    🔍 Checking: ${url}
-        Find all available fields and fill them
-        Wait Until Element Is Visible   ${read_alert_text}  timeout=0.1s
-        Then Visualize a mandatory warning
+        Find all available fields and fill them    ${url}
+        # Wait Until Element Is Visible   ${read_alert_text}  timeout=0.1s
+        # Then Visualize a mandatory warning
     END
 
     Close Browser
 
 Find all available fields and fill them
+    [Arguments]    ${url}
     FOR    ${FIELD_NAME}    IN    @{PLACEHOLDERS.keys()}
         ${locator}=    Set Variable    ${PLACEHOLDERS["${FIELD_NAME}"]}
         ${value}=      Set Variable    ${FIELD_VALUES["${FIELD_NAME}"]}
-        ${is_present}=    Run Keyword And Return Status    Element Should Be Visible    ${locator}    timeout=1s
+        ${is_present}=    Run Keyword And Return Status    Element Should Be Visible    ${locator}    #timeout=1s  
 
-        Run Keyword If    ${is_present}    Handle Dynamic Field    ${locator}    ${value}
+        Run Keyword If    ${is_present}   Forms Parser    ${locator}    ${value}
+        
+        # DEBUGGING PURPOSE
+        Run Keyword If    ${is_present}   Log To Console    Current page: ${url} > Element detected: ${FIELD_NAME} 
     END
 
-
-Handle Dynamic Field
+Forms Parser
     [Arguments]    ${locator}    ${value}
     ${webelement}=    Get WebElement    ${locator}    
-    ${tag}=           Get Element Attribute    ${locator}    tagName    
+    ${tag}=           Get Element Attribute    ${locator}    tagName 
 
     IF    '${tag}' == 'INPUT'
         ${type}=    Get Element Attribute    ${locator}    type

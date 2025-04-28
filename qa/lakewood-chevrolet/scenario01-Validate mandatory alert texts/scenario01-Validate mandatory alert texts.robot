@@ -8,7 +8,7 @@ Resource    ./qa/lakewood-chevrolet/resources/variables.robot
 Resource    ./qa/lakewood-chevrolet/resources/keywords.robot
 
 ** Test Cases **
-Case01: Validate FIRST NAME mandatory alert text
+Case01: Validate mandatory alert text
     Open and Check All Pages with Forms    ${SPREADSHEET_PATH}
     Close Browser
 

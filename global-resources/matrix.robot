@@ -1,80 +1,103 @@
 *** Variables ***
 
 &{PLACEHOLDERS}
-...    FIRST NAME=//input[@placeholder="FIRST NAME (*)"]
-...    LAST NAME=//input[@placeholder="LAST NAME (*)"]
-...    EMAIL=//input[@placeholder="EMAIL (*)"]
-...    PHONE=//input[@placeholder="PHONE"]
-...    POSTAL CODE=//input[@placeholder="POSTAL CODE (*)"]
-...    MESSAGE=//textarea[@placeholder="MESSAGE (*)"]
+...    FIRST NAME=//input[contains(@placeholder, "FIRST NAME")]
+...    LAST NAME=//input[contains(@placeholder, "LAST NAME")]
+...    EMAIL=//input[contains(@placeholder, "EMAIL")]
+...    PHONE=//input[contains(@placeholder, "PHONE")]
+# ...    DATE=//input[contains(@placeholder, "DATE")]
+# ...    PREFERRED DATE=//input[contains(@placeholder, "PREFERRED DATE")]
+...    TIME=//select[contains(@placeholder, "TIME")]
+...    YEAR=//input[contains(@placeholder, "YEAR")]
+...    MAKE=//input[contains(@placeholder, "MAKE")]
+...    MODEL=//input[contains(@placeholder, "MODEL")]
+...    MILEAGE=//input[contains(@placeholder, "MILEAGE")]
+...    ODOMETER=//input[contains(@placeholder, "ODOMETER")]
+...    COLOUR=//input[contains(@placeholder, "COLOUR")]
+...    POSTAL CODE=//input[contains(@placeholder, "POSTAL CODE")]
+...    MESSAGE=//textarea[contains(@placeholder, "MESSAGE")]
 ...    COMMENTS=//textarea[@placeholder="COMMENTS"]
-...    LINCOLN RETAILER=xpath=//select[contains(@class, 'nf-element') and @aria-required='true']
-...    HOME PHONE=//input[@placeholder="HOME PHONE (*)"]
-...    MOBILE PHONE=//input[@placeholder="MOBILE PHONE"]
-...    WORK PHONE=//input[@placeholder="WORK PHONE"]
-...    DATE OF BIRTH=//input[@placeholder="DATE OF BIRTH (*)"]
-...    SIN=//input[@placeholder="SIN"]
+...    PLEASE INCLUDE ADDITIONAL INFORMATION=//input[@placeholder="Please include"]
+...    TYPE OF SERVICE NEEDED=//input[contains(@placeholder, "Type of service needed")]
+# ...    LINCOLN RETAILER=xpath=//select[contains(@class, 'nf-element') and @aria-required='true']
+...    HOME PHONE=//input[contains(@placeholder, "HOME PHONE")]
+...    MOBILE PHONE=//input[contains(@placeholder, "MOBILE PHONE")]
+...    WORK PHONE=//input[contains(@placeholder, "WORK PHONE")]
+...    DATE OF BIRTH=//input[contains(@placeholder, "DATE OF BIRTH")]
+...    SIN=//input[contains(@placeholder, "SIN")]
 ...    MARITAL STATUS=//select[@name="marital_status"]
 ...    IS COSIGNER AVAILABLE?=//select[@name="cosigner"]
-...    CASH DOWN=//input[@placeholder="CASH DOWN"]
+...    CASH DOWN=//input[contains(@placeholder, "CASH DOWN")]
 ...    BANKRUPTCY=//select[@name="bankruptcy"]
-...    LICENSE PROVINCE=//input[@placeholder="LICENSE PROVINCE"]
-...    EXPIRATION DATE=//input[@placeholder="EXPIRATION DATE"]
-...    LICENSE NUMBER=//input[@placeholder="LICENSE NUMBER"]
+...    LICENSE PROVINCE=//input[contains(@placeholder, "LICENSE PROVINCE")]
+...    EXPIRATION DATE=//input[contains(@placeholder, "EXPIRATION DATE")]
+...    LICENSE NUMBER=//input[contains(@placeholder, "LICENSE NUMBER")]
 ...    ADDRESS TYPE (CURRENT)=//select[@name="current_address_type"]
-...    LINE 1 (CURRENT)=//input[@placeholder="LINE 1 (*)"]
-...    LINE 2 (CURRENT)=//input[@placeholder="LINE 2"]
-...    CITY (CURRENT)=//input[@placeholder="CITY (*)"]
-...    PROVINCE (CURRENT)=//input[@placeholder="PROVINCE (*)"]
+...    LINE 1 (CURRENT)=//input[contains(@placeholder, "LINE 1")]
+...    LINE 2 (CURRENT)=//input[contains(@placeholder, "LINE 2")]
+...    CITY (CURRENT)=//input[contains(@placeholder, "CITY")]
+...    PROVINCE (CURRENT)=//input[contains(@placeholder, "PROVINCE")]
 ...    HOME STATUS (CURRENT)=//select[@name="current_home_status"]
-...    YEARS OCCUPIED (CURRENT)=//input[@placeholder="YEARS OCCUPIED (*)"]
-...    MONTHS OCCUPIED (CURRENT)=//input[@placeholder="MONTHS OCCUPIED (*)"]
-...    RENT PAYMENT (CURRENT)=//input[@placeholder="RENT PAYMENT"]
-...    BALANCE OF MORTGAGE (CURRENT)=//input[@placeholder="BALANCE OF MORTGAGE"]
-...    VALUE OF HOUSE (CURRENT)=//input[@placeholder="VALUE OF HOUSE"]
-...    MONTHLY PAYMENT (CURRENT)=//input[@placeholder="MONTHLY PAYMENT"]
+...    YEARS OCCUPIED (CURRENT)=//input[contains(@placeholder, "YEARS OCCUPIED")]
+...    MONTHS OCCUPIED (CURRENT)=//input[contains(@placeholder, "MONTHS OCCUPIED")]
+...    RENT PAYMENT (CURRENT)=//input[contains(@placeholder, "RENT PAYMENT")]
+...    BALANCE OF MORTGAGE (CURRENT)=//input[contains(@placeholder, "BALANCE OF MORTGAGE")]
+...    VALUE OF HOUSE (CURRENT)=//input[contains(@placeholder, "VALUE OF HOUSE")]
+...    MONTHLY PAYMENT (CURRENT)=//input[contains(@placeholder, "MONTHLY PAYMENT")]
 ...    ADDRESS TYPE (PREVIOUS)=//select[@name="previous_address_type"]
-...    LINE 1 (PREVIOUS)=//input[@placeholder="LINE 1 (*)"]
-...    LINE 2 (PREVIOUS)=//input[@placeholder="LINE 2"]
-...    CITY (PREVIOUS)=//input[@placeholder="CITY (*)"]
-...    PROVINCE (PREVIOUS)=//input[@placeholder="PROVINCE (*)"]
-...    POSTAL CODE (PREVIOUS)=//input[@placeholder="POSTAL CODE (*)"]
+...    LINE 1 (PREVIOUS)=//input[contains(@placeholder, "LINE 1")]
+...    LINE 2 (PREVIOUS)=//input[contains(@placeholder, "LINE 2")]
+...    CITY (PREVIOUS)=//input[contains(@placeholder, "CITY")]
+...    PROVINCE (PREVIOUS)=//input[contains(@placeholder, "PROVINCE")]
+...    POSTAL CODE (PREVIOUS)=//input[contains(@placeholder, "POSTAL CODE")]
 ...    HOME STATUS (PREVIOUS)=//select[@name="previous_home_status"]
-...    YEARS OCCUPIED (PREVIOUS)=//input[@placeholder="YEARS OCCUPIED (*)"]
-...    MONTHS OCCUPIED (PREVIOUS)=//input[@placeholder="MONTHS OCCUPIED (*)"]
-...    RENT PAYMENT (PREVIOUS)=//input[@placeholder="RENT PAYMENT"]
-...    BALANCE OF MORTGAGE (PREVIOUS)=//input[@placeholder="BALANCE OF MORTGAGE"]
-...    VALUE OF HOUSE (PREVIOUS)=//input[@placeholder="VALUE OF HOUSE"]
-...    MONTHLY PAYMENT (PREVIOUS)=//input[@placeholder="MONTHLY PAYMENT"]
+...    YEARS OCCUPIED (PREVIOUS)=//input[contains(@placeholder, "YEARS OCCUPIED")]
+...    MONTHS OCCUPIED (PREVIOUS)=//input[contains(@placeholder, "MONTHS OCCUPIED")]
+...    RENT PAYMENT (PREVIOUS)=//input[contains(@placeholder, "RENT PAYMENT")]
+...    BALANCE OF MORTGAGE (PREVIOUS)=//input[contains(@placeholder, "BALANCE OF MORTGAGE")]
+...    VALUE OF HOUSE (PREVIOUS)=//input[contains(@placeholder, "VALUE OF HOUSE")]
+...    MONTHLY PAYMENT (PREVIOUS)=//input[contains(@placeholder, "MONTHLY PAYMENT")]
 ...    EMPLOYMENT TYPE (CURRENT)=//select[@name="current_employment_type"]
 ...    EMPLOYMENT STATUS (CURRENT)=//select[@name="current_employment_status"]
-...    EMPLOYER (CURRENT)=//input[@placeholder="EMPLOYER (*)"]
-...    OCCUPATION (CURRENT)=//input[@placeholder="OCCUPATION"]
-...    YEARS EMPLOYED (CURRENT)=//input[@placeholder="YEARS EMPLOYED"]
-...    MONTHS EMPLOYED (CURRENT)=//input[@placeholder="MONTHS EMPLOYED"]
-...    MONTHLY INCOME (CURRENT)=//input[@placeholder="MONTHLY INCOME"]
-...    SOURCE OF OTHER INCOME (CURRENT)=//input[@placeholder="SOURCE OF OTHER INCOME"]
-...    OTHER INCOME (CURRENT)=//input[@placeholder="OTHER INCOME"]
+...    EMPLOYER (CURRENT)=//input[contains(@placeholder, "EMPLOYER")]
+...    OCCUPATION (CURRENT)=//input[contains(@placeholder, "OCCUPATION")]
+...    YEARS EMPLOYED (CURRENT)=//input[contains(@placeholder, "YEARS EMPLOYED")]
+...    MONTHS EMPLOYED (CURRENT)=//input[contains(@placeholder, "MONTHS EMPLOYED")]
+...    MONTHLY INCOME (CURRENT)=//input[contains(@placeholder, "MONTHLY INCOME")]
+...    SOURCE OF OTHER INCOME (CURRENT)=//input[contains(@placeholder, "SOURCE OF OTHER INCOME")]
+...    OTHER INCOME (CURRENT)=//input[contains(@placeholder, "OTHER INCOME")]
 ...    EMPLOYMENT TYPE (PREVIOUS)=//select[@name="previous_employment_type"]
 ...    EMPLOYMENT STATUS (PREVIOUS)=//select[@name="previous_employment_status"]
-...    EMPLOYER (PREVIOUS)=//input[@placeholder="EMPLOYER (*)"]
-...    OCCUPATION (PREVIOUS)=//input[@placeholder="OCCUPATION"]
-...    YEARS EMPLOYED (PREVIOUS)=//input[@placeholder="YEARS EMPLOYED"]
-...    MONTHS EMPLOYED (PREVIOUS)=//input[@placeholder="MONTHS EMPLOYED"]
-...    MONTHLY INCOME (PREVIOUS)=//input[@placeholder="MONTHLY INCOME"]
-...    SOURCE OF OTHER INCOME (PREVIOUS)=//input[@placeholder="SOURCE OF OTHER INCOME"]
-...    OTHER INCOME (PREVIOUS)=//input[@placeholder="OTHER INCOME"]
-...    SUBMIT BUTTON=//input[@type="submit" and @value="Submit"]
+...    EMPLOYER (PREVIOUS)=//input[contains(@placeholder, "EMPLOYER")]
+...    OCCUPATION (PREVIOUS)=//input[contains(@placeholder, "OCCUPATION")]
+...    YEARS EMPLOYED (PREVIOUS)=//input[contains(@placeholder, "YEARS EMPLOYED")]
+...    MONTHS EMPLOYED (PREVIOUS)=//input[contains(@placeholder, "MONTHS EMPLOYED")]
+...    MONTHLY INCOME (PREVIOUS)=//input[contains(@placeholder, "MONTHLY INCOME")]
+...    SOURCE OF OTHER INCOME (PREVIOUS)=//input[contains(@placeholder, "SOURCE OF OTHER INCOME")]
+...    OTHER INCOME (PREVIOUS)=//input[contains(@placeholder, "OTHER INCOME")]
+...    MY EMAIL HERE=//input[contains(@placeholder, "My email here")]
+...    SUBMIT BUTTON=//input[@type="submit"]
 
 
 &{FIELD_VALUES}
-...    FIRST NAME=    
+...    FIRST NAME=   
 ...    LAST NAME=Doe    
 ...    EMAIL=robinson@leadboxhq.com    
-...    PHONE=416-613-9686    
+...    PHONE=416-613-9686 
+...    DATE=06/22/2025
+...    PREFERRED DATE=06/22/2026
+...    TIME=Morning
+...    YEAR=2021
+...    MAKE=Tesla
+...    MODEL=3
+...    MILEAGE=12000
+...    ODOMETER=14000
+...    COLOUR=White
 ...    POSTAL CODE=M4M 2A5
-...    MESSAGE=i need tires to my toyota   
+...    MESSAGE=i need tires to my tesla   
 ...    COMMENTS=QA_COMMENTS
+...    PLEASE INCLUDE ADDITIONAL INFORMATION=QA_ADDITIONAL-INFORMATION
+...    TYPE OF SERVICE NEEDED=Tires replacing
 ...    LINCOLN RETAILER=Downtown Lincoln 
 ...    HOME PHONE=1111111111
 ...    MOBILE PHONE=2222222222
@@ -131,4 +154,5 @@
 ...    MONTHLY INCOME (PREVIOUS)=9
 ...    SOURCE OF OTHER INCOME (PREVIOUS)=PREV_QA_SOURCE OF OTHER INCOME 
 ...    OTHER INCOME (PREVIOUS)=PREV_QA_OTHER INCOME 
+...    MY EMAIL HERE=
 ...    SUBMIT BUTTON=Submit
