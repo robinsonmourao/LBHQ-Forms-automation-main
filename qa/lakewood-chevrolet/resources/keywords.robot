@@ -2,8 +2,8 @@
 Library    SeleniumLibrary
 
 ** Keywords **
-Open and Check All Pages with Forms
-    [Arguments]    ${file_path}
+Open All Pages with Forms
+    [Arguments]    ${file_path}    ${VALIDATION_KEYWORD}
     Load Spreadsheet    ${file_path}
     ${urls}=    Get Urls With Form
     Open Browser    about:blank    chrome
@@ -12,11 +12,8 @@ Open and Check All Pages with Forms
         Run Keyword If    '${url}' == ''    Continue For Loop
         Go To    ${url}
         Log To Console    🔍 Checking: ${url}
-        Find all available fields and fill them    ${url}
-        # Wait Until Element Is Visible   ${read_alert_text}  timeout=0.1s
-        # Then Visualize a mandatory warning
+        Run Keyword    ${VALIDATION_KEYWORD}    ${url}
     END
-
     Close Browser
 
 Find all available fields and fill them
@@ -58,5 +55,3 @@ Visualize a mandatory warning
 
 Validate if the last name field is mandatory
     Element Should Contain    ${first_name_alert_by_xpath}    This is a required field.
-    
-

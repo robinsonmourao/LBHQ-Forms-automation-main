@@ -9,7 +9,5 @@ Resource    ./qa/lakewood-chevrolet/resources/keywords.robot
 
 ** Test Cases **
 Case01: Validate mandatory alert text
-    Open and Check All Pages with Forms    ${SPREADSHEET_PATH}
+    Open All Pages with Forms    ${SPREADSHEET_PATH}    Find all available fields and fill them   
     Close Browser
-
-Case02: Validate LAST NAME mandatory alert text

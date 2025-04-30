@@ -55,7 +55,6 @@ OR instal vscode extension via marketplace (you can run on the Play button):
       - ├── keywords.robot — Prod-specific keywords for the dealer  
       - └── variables.robot — Prod-specific variables for the dealer
     - └── /(scenario-folder)
-      - ├── matrix.robot — Values to input
       - └── (scenarioXX-description).robot  
 
 - /utils  
