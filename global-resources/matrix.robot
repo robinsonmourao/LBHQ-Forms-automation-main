@@ -77,6 +77,7 @@
 ...    OTHER INCOME (PREVIOUS)=//input[contains(@placeholder, "OTHER INCOME")]
 ...    MY EMAIL HERE=//input[contains(@placeholder, "My email here")]
 ...    SUBMIT BUTTON=//input[@type="submit"]
+...    ALERT TEXT=//xpath=//div[contains(@class, "nf-error")]
 
 
 &{FIELD_VALUES}
