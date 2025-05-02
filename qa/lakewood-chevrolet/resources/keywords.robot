@@ -23,8 +23,14 @@ Open All Pages with Forms
 Log Errors on Console
     [Arguments]    ${reports}
     IF    ${reports} != []
-        Log Many    ${reports}
-        Fail    ${reports}
+        ${flat}=    Create List
+        FOR    ${group}    IN    @{reports}
+            FOR    ${line}    IN    @{group}
+                Append To List    ${flat}    ${line}
+            END
+        END
+        ${joined}=    Evaluate    '\\n'.join(${flat})
+        Fail    ${joined}
     END
 
 Find all available fields and fill them
@@ -35,9 +41,6 @@ Find all available fields and fill them
         ${is_present}=    Run Keyword And Return Status    Element Should Be Visible    ${locator}    #timeout=1s  
 
         Run Keyword If    ${is_present}   Forms Parser    ${locator}    ${value}
-        
-        # DEBUGGING PURPOSE
-        Run Keyword If    ${is_present}   Log To Console    Current page: ${url} > Element detected: ${FIELD_NAME} 
     END
 
 Forms Parser
@@ -60,35 +63,17 @@ Forms Parser
         Log To Console    ⚠️ Unknown tag: ${tag}
     END
 
-
-#==================================== VALIDATIONS =====================================
-
-
-Visualize a mandatory warning
-    ${alert}=                       Get Text        ${read_alert_text}  
-    Should Be Equal As Strings      ${alert}        This is a required field.
-    
-Validate if the mandatory alerts are present
-    [Arguments]    ${url}    ${reports}
-    Click on the submit button
-
-    @{current_page_missing_alerts}=    Create List
-    @{required_labels}=    Get WebElements    xpath=//label[contains(text(), '*')]
-    ${url}=    Get Location
-
-    FOR    ${label}    IN    @{required_labels}
-        ${input_id}=         Get Element Attribute    ${label}    for
-        ${input}=            Get WebElement    xpath=//*[@id="${input_id}"]
-        ${placeholder}=      Get Text    ${input}
-
-        ${error_visible}=    Run Keyword And Return Status
-        ...    Element Should Be Visible
-        ...    xpath=//*[@id="${input_id}"]/ancestor::nf-field//div[contains(@class, "nf-error")]
-        
-        IF    not ${error_visible}
-            Append To List    ${current_page_missing_alerts}    ${url} > ${input_id}
-
-            ${current_error}=    Set Variable    Form validation failed — missing required alerts:\n${current_page_missing_alerts}
-            Append To List    ${reports}    ❌ ${current_error}
+Get Field Label
+    [Arguments]    ${input}    ${label}
+    ${placeholder}=    Get Element Attribute    ${input}    placeholder
+    IF    '${placeholder}' == 'None' or '${placeholder}' == ''
+        ${placeholder}=    Get Text    ${label}
+        IF    '${placeholder}' == 'None' or '${placeholder}' == ''
+            ${placeholder}=    Get Selected List Label    ${input}            
         END
     END
+
+    IF    '${placeholder}' == 'None' or '${placeholder}' == ''
+        ${placeholder}=    Set Variable    [unsupported label]
+    END
+    [Return]    ${placeholder}
