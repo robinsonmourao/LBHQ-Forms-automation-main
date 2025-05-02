@@ -5,6 +5,7 @@ Library    Collections
 ** Keywords **
 Open All Pages with Forms
     [Arguments]    ${file_path}    ${VALIDATION_KEYWORD}
+    @{reports}=    Create List
     Load Spreadsheet    ${file_path}
     ${urls}=    Get Urls With Form
     Open Browser    about:blank    chrome
@@ -13,9 +14,18 @@ Open All Pages with Forms
         Run Keyword If    '${url}' == ''    Continue For Loop
         Go To    ${url}
         Log To Console    🔍 Checking: ${url}
-        Run Keyword    ${VALIDATION_KEYWORD}    ${url}
+        Run Keyword    ${VALIDATION_KEYWORD}    ${url}    ${reports}
     END
+
+    Log Errors on Console    ${reports}
     Close Browser
+
+Log Errors on Console
+    [Arguments]    ${reports}
+    IF    ${reports} != []
+        Log Many    ${reports}
+        Fail    ${reports}
+    END
 
 Find all available fields and fill them
     [Arguments]    ${url}
@@ -50,16 +60,19 @@ Forms Parser
         Log To Console    ⚠️ Unknown tag: ${tag}
     END
 
+
+#==================================== VALIDATIONS =====================================
+
+
 Visualize a mandatory warning
     ${alert}=                       Get Text        ${read_alert_text}  
     Should Be Equal As Strings      ${alert}        This is a required field.
     
-
 Validate if the mandatory alerts are present
-    [Arguments]    ${url}
+    [Arguments]    ${url}    ${reports}
     Click on the submit button
 
-    @{missing_alerts}=    Create List
+    @{current_page_missing_alerts}=    Create List
     @{required_labels}=    Get WebElements    xpath=//label[contains(text(), '*')]
     ${url}=    Get Location
 
@@ -73,12 +86,9 @@ Validate if the mandatory alerts are present
         ...    xpath=//*[@id="${input_id}"]/ancestor::nf-field//div[contains(@class, "nf-error")]
         
         IF    not ${error_visible}
-            Append To List    ${missing_alerts}    ${url} > ${placeholder}
+            Append To List    ${current_page_missing_alerts}    ${url} > ${input_id}
+
+            ${current_error}=    Set Variable    Form validation failed — missing required alerts:\n${current_page_missing_alerts}
+            Append To List    ${reports}    ❌ ${current_error}
         END
-
-        Log To Console    ✅ ${url} > Field '${placeholder}' has required error container
-    END
-
-    IF    ${missing_alerts} != []
-        Log Many    ❌ Missing alert container for the following fields:\n${missing_alerts}
     END
