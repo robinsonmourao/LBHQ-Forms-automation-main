@@ -7,14 +7,14 @@ Open All Pages with Forms
     [Arguments]    ${file_path}    ${VALIDATION_KEYWORD}
     @{reports}=    Create List
     Load Spreadsheet    ${file_path}
-    ${urls}=    Get Urls With Form
+    ${form_map}=    Get Form URL Map
     Open Browser    about:blank    chrome
 
-    FOR    ${url}    IN    @{urls}
-        Run Keyword If    '${url}' == ''    Continue For Loop
+    FOR    ${url}    IN    @{form_map.keys()}
+        ${page_name}=    Get From Dictionary    ${form_map}    ${url}
         Go To    ${url}
-        Log To Console    🔍 Checking: ${url}
-        Run Keyword    ${VALIDATION_KEYWORD}    ${url}    ${reports}
+        Log To Console    🔍 Checking: ${page_name} (${url})
+        Run Keyword    ${VALIDATION_KEYWORD}    ${url}    ${reports}    ${page_name}
     END
 
     Log Errors on Console    ${reports}
@@ -22,7 +22,7 @@ Open All Pages with Forms
 
 Log Errors on Console
     [Arguments]    ${reports}
-    IF    ${reports} != []
+    IF    "${reports}" != "[[]]"
         ${flat}=    Create List
         FOR    ${group}    IN    @{reports}
             FOR    ${line}    IN    @{group}
@@ -76,4 +76,4 @@ Get Field Label
     IF    '${placeholder}' == 'None' or '${placeholder}' == ''
         ${placeholder}=    Set Variable    [unsupported label]
     END
-    [Return]    ${placeholder}
+    RETURN    ${placeholder}

@@ -7,11 +7,15 @@ class ExcelFormScanner:
     def load_spreadsheet(self, file_path):
         self.df = pd.read_excel(file_path)
 
-    def get_urls_with_form(self):
-        urls = []
-        if "Has a Form?*" not in self.df.columns or "URL" not in self.df.columns:
-            raise ValueError("Expected columns: 'Has a Form?*' and 'URL'")
-        for index, row in self.df.iterrows():
+    def get_form_url_map(self):
+        url_map = {}
+        if "Has a Form?*" not in self.df.columns or "URL" not in self.df.columns or "Pages" not in self.df.columns:
+            raise ValueError("Expected columns: 'Has a Form?*', 'URL', and 'Pages'")
+        
+        for _, row in self.df.iterrows():
             if str(row["Has a Form?*"]).strip().lower() == "yes":
-                urls.append(row["URL"])
-        return urls
+                url = row["URL"]
+                page = row["Pages"]
+                url_map[url] = page
+        return url_map
+
