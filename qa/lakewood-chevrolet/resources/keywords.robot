@@ -33,47 +33,86 @@ Log Errors on Console
         Fail    ${joined}
     END
 
-Find all available fields and fill them
+Detect Fields
     [Arguments]    ${url}
-    FOR    ${FIELD_NAME}    IN    @{PLACEHOLDERS.keys()}
-        ${locator}=    Set Variable    ${PLACEHOLDERS["${FIELD_NAME}"]}
-        ${value}=      Set Variable    ${FIELD_VALUES["${FIELD_NAME}"]}
-        ${is_present}=    Run Keyword And Return Status    Element Should Be Visible    ${locator}    #timeout=1s  
+    Open Browser    ${url}   chrome 
+    @{fields}=    Get WebElements    xpath=//input[contains(@id, "nf-field")] | //select[contains(@id, "nf-field")] | //textarea[contains(@id, "nf-field")]
 
-        Run Keyword If    ${is_present}   Forms Parser    ${locator}    ${value}
+    FOR    ${field}    IN    @{fields}
+        ${placeholder}=    Get Field Text    ${field}
+
+        # ${value}=        Set Variable    ${FIELD_VALUES["${placeholder}"]}
+        # ${is_present}=   Run Keyword And Return Status    Element Should Be Visible    ${xpath}
+
+        # Run Keyword If    ${is_present}    Detect the HTML Field Tag and Inject Values    ${xpath}    ${value}    ${tag}
     END
 
-Forms Parser
-    [Arguments]    ${locator}    ${value}
-    ${webelement}=    Get WebElement    ${locator}    
-    ${tag}=           Get Element Attribute    ${locator}    tagName 
+    Close Browser
+
+
+Detect the HTML Field Tag and Inject Values
+    [Arguments]    ${xpath}    ${value}    ${tag}
 
     IF    '${tag}' == 'INPUT'
-        ${type}=    Get Element Attribute    ${locator}    type
+        ${type}=    Get Element Attribute    ${xpath}    type
         IF    '${type}' != 'submit'
-            Input Text    ${locator}    ${value}
+            Input Text    ${xpath}    ${value}
         ELSE
-            Click Button    ${locator}
+            Click Button    ${xpath}
         END
     ELSE IF    '${tag}' == 'TEXTAREA'
-        Input Text    ${locator}    ${value}
+        Input Text    ${xpath}    ${value}
     ELSE IF    '${tag}' == 'SELECT'
-        Select From List By Value    ${locator}    ${value}
+        Select From List By Value    ${xpath}    ${value}
     ELSE
         Log To Console    ⚠️ Unknown tag: ${tag}
     END
 
-Get Field Label
-    [Arguments]    ${input}    ${label}
-    ${placeholder}=    Get Element Attribute    ${input}    placeholder
-    IF    '${placeholder}' == 'None' or '${placeholder}' == ''
-        ${placeholder}=    Get Text    ${label}
-        IF    '${placeholder}' == 'None' or '${placeholder}' == ''
-            ${placeholder}=    Get Selected List Label    ${input}            
-        END
+Get Label Text
+    [Arguments]    ${label}
+    ${input_id}=    Get Element Attribute    ${label}    for
+    ${field}=       Get WebElement    xpath=//*[@id="${input_id}"]
+    ${placeholder}=    Get Field Text    ${field}
+
+    RETURN    ${placeholder}
+    
+Get Field Text
+    [Arguments]    ${field}
+    
+    ${tag}=         Get Element Attribute    ${field}    tagName
+    
+    IF    '${tag}' == 'INPUT'
+        ${placeholder}=    Get Element Attribute    ${field}    placeholder
+    ELSE IF    '${tag}' == 'SELECT'
+        ${placeholder}=    Get Selected List Label    ${field}
+    ELSE IF    '${tag}' == 'TEXTAREA'
+        ${placeholder}=    Get Text    ${field}
+    ELSE
+        ${placeholder}=    Set Variable    [unsupported tag: ${tag}]
     END
 
     IF    '${placeholder}' == 'None' or '${placeholder}' == ''
-        ${placeholder}=    Set Variable    [unsupported label]
+        ${placeholder}=    Set Variable    [missing placeholder]
     END
+
     RETURN    ${placeholder}
+
+Get Field ID
+    [Arguments]    ${field}
+
+    ${tag}=    Get Element Attribute    ${field}    tagName
+    ${id}=    Set Variable    None
+
+    IF    '${tag}' == 'INPUT' or '${tag}' == 'TEXTAREA'
+        ${id}=    Get Element Attribute    ${field}    id
+    ELSE IF    '${tag}' == 'SELECT'
+        ${id}=    Get Element Attribute    ${field}    for    
+    END
+
+    IF    "${id}" == "None" or "${id}" == ""
+        ${id}=    Set Variable     [unsupported html tag]
+    END
+    
+    RETURN    ${id}
+
+

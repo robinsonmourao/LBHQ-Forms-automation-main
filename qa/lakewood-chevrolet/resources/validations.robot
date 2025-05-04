@@ -1,3 +1,5 @@
+*** Settings ***
+Library    SeleniumLibrary
 *** Keywords ***
     
 Validate if the mandatory alerts are present
@@ -9,16 +11,15 @@ Validate if the mandatory alerts are present
     ${url}=    Get Location
 
     FOR    ${label}    IN    @{required_labels}
-        ${input_id}=         Get Element Attribute    ${label}    for
-        ${input}=            Get WebElement    xpath=//*[@id="${input_id}"]
-        ${placeholder}=    Get Field Label    ${input}    ${label}
+        ${placeholder}=    Get Label Text    ${label}
+        ${field_id}=    Get Field ID   ${label}
 
         ${mandatory_error_visible}=    Run Keyword And Return Status
         ...    Wait Until Keyword Succeeds
-        ...    5x
+        ...    4x
         ...    0.1s
         ...    Element Should Be Visible
-        ...    xpath=//*[@id="${input_id}"]/ancestor::nf-field//div[contains(@class, "nf-error")]
+        ...    xpath=//*[@id="${field_id}"]/ancestor::nf-field//div[contains(@class, "nf-error")]
 
         IF    not ${mandatory_error_visible} and '${placeholder}' != 'My email here (*)'
             ${description}=    Set Variable    ${placeholder} has an asterisk but the mandatory text alert is not present
@@ -35,28 +36,28 @@ Validate if the mandatory alerts are present
 
 Validate the mandatory warning
     ${alert}=                       Get Text        ${read_alert_text}  
-    Should Be Equal As Strings      ${alert}        This is a required field.
+    Should Be Equal As Strings      ${alert}        ${FIELD_VALUES[ALERT TEXT]}
 
 # Get Field Label
-#     [Arguments]    ${input}    ${label}
+#     [Arguments]    ${xpath}    ${label}
 
 #     ${placeholder}=    Set Variable    "None"
 
 #     @{strategies}=    Create List
-#     ...    Get Element Attribute    ${input}    placeholder
-#     ...    Get Element Attribute    ${input}    tagName
+#     ...    Get Element Attribute    ${xpath}    placeholder
+#     ...    Get Element Attribute    ${xpath}    tagName
 #     ...    Get Text    ${label}
-#     ...    Get Selected List Label    ${input}
+#     ...    Get Selected List Label    ${xpath}
     
 #     FOR    ${strategy}    IN    @{strategies}
-#         ${placeholder}=    Run Keyword    ${strategy}    ${input}    ${label}
+#         ${placeholder}=    Run Keyword    ${strategy}    ${xpath}    ${label}
 #         IF    '${placeholder}' != 'None' and '${placeholder}' != ''
 #             Exit For Loop
 #         END
 #     END
 
 #     IF    '${placeholder}' == 'None' or '${placeholder}' == ''
-#         ${placeholder}=    Set Variable    [unsupported label]
+#         ${placeholder}=    Set Variable    [unsupported field]
 #     END
 
 #     [Return]    ${placeholder}

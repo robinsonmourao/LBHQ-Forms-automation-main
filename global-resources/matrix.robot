@@ -157,3 +157,4 @@
 ...    OTHER INCOME (PREVIOUS)=PREV_QA_OTHER INCOME 
 ...    MY EMAIL HERE=
 ...    SUBMIT BUTTON=Submit
+...    ALERT TEXT=This is a required field.
