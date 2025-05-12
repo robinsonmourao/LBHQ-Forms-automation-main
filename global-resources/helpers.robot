@@ -18,11 +18,13 @@ Get Field Text
         ${placeholder}=    Get Selected List Label    ${field}
     ELSE IF    '${tag}' == 'TEXTAREA'
         ${placeholder}=    Get Text    ${field}
-    ELSE
-        IF    '${placeholder}' == 'None' or '${placeholder}' == ''
-            ${placeholder}=    Set Variable    [missing placeholder]
+    END
+
+    IF    "${placeholder}" == "None" or "${placeholder}" == ""
+        IF    "${tag}" == "None" or "${tag}" == ""
+            ${placeholder}=    Set Variable    [unsupported tag: ${tag}] 
         ELSE
-            ${placeholder}=    Set Variable    [unsupported tag: ${tag}]            
+            ${placeholder}=    Set Variable    [missing placeholder] 
         END
     END
 
