@@ -38,13 +38,14 @@ OR instal vscode extension via marketplace (you can run on the Play button):
 
 - └── /global-resources  
   - ├── global-keywords.robot — Shared project-wide keywords  
-  - ├── global-variables.robot — Shared project-wide variables  
-  - └── matrix.robot — Global CSS mapping selectors and Values
+  - ├── helpers.robot — Shared project-wide simple helpers methods
+  - └── matrix.robot — Shared project-wide CSS mapping xpaths and Values
 
 - └── /qa  
   - └── /*dealer-name  
     - ├── /resources  
-      - ├── keywords.robot — QA-specific keywords for the dealer  
+      - ├── _(Spreadsheet Forms) — For every column where 'Has a Form?*' is marked as 'Yes', the column 'URL' will be loaded.
+      - ├── validations.robot — QA-specific dealer validations
       - └── variables.robot — QA-specific variables for the dealer  
     - └── /(scenario-folder)
       - └── (scenarioXX-description).robot  
@@ -52,7 +53,8 @@ OR instal vscode extension via marketplace (you can run on the Play button):
 - └── /production  
   - └── /*dealer-name
     - ├── /resources  
-      - ├── keywords.robot — Prod-specific keywords for the dealer  
+      - ├── _(Spreadsheet Forms) — For every column where 'Has a Form?*' is marked as 'Yes', the column 'URL' will be loaded.
+      - ├── validations.robot — Prod-specific dealer validations
       - └── variables.robot — Prod-specific variables for the dealer
     - └── /(scenario-folder)
       - └── (scenarioXX-description).robot  
